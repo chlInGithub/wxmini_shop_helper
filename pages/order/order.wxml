@@ -1,0 +1,60 @@
+<page-meta page-style="background-color:{{bgColor}};min-height:100vh;">
+</page-meta>
+
+<mp-navigation-bar background="{{navBGColor}}" loading="{{false}}" show="{{true}}" animated="{{false}}" back="{{true}}">
+  <view slot="center" class="fs10 cwhite">{{appName}}</view>
+</mp-navigation-bar>
+
+
+<view class="container">
+  <view class="ptb10 outter-view fs8 cgray ta-l">
+    <view class="cell pl10 pr10">
+      依据订单的修改时间，首先展示近一小时的50个订单，然后每间隔1分钟追加显示新订单。
+      <view>距离刷新订单还剩余<text class="cred">{{waitSecond}}</text>秒。</view>
+    </view>
+  </view>
+
+  <block wx:if="{{orders.length > 0}}" wx:for="{{orders}}" wx:key="*this" wx:for-item="order">
+    <view class="outter-view order-view not-first-outter">
+      <view class="base-info ptb10 fs8" data-id="{{order.id}}">
+        <view class="cred status fl pl10 col50 ta-l">{{order.statusDes}}</view>
+        <view class="payType pr10 fr ta-r fs7">{{order.payVO.typeDesc}}</view>
+        <view class="clearboth"></view>
+      </view>
+      <view wx:for="{{order.subOrderVOS}}" data-id="{{order.id}}">
+        <view class="inline-block">
+          <view class="col25 fl img-view">
+            <image class="cart-item-img" src="{{imgPrefix + item.itemImg}}"></image>
+          </view>
+          <view class="fr col70 content">
+            <view class="fs7 mt3">{{item.itemTitle}}</view>
+            <view class="cgray fs6 mt3" wx:if="{{item.skuTitle}}">{{item.skuTitle}}</view>
+            <view class="fs6 mt3" wx:if="{{item.presell}}">
+              <view class="itemDetailTag">
+                预售
+              </view>
+            </view>
+            <view class="pr10 price-view mt3">
+              <view class="fs8 inline-block fl">￥{{item.price}}</view>
+              <view class="fs6 inline-block fl mt3 ml3"> x {{item.count}}</view>
+            </view>
+          </view>
+        </view>
+
+      </view>
+      <view class="fee-view">
+        <view class="fs8 ta-r pr10">优惠后合计:￥{{order.realFee}}</view>
+      </view>
+      <view wx:if="{{order.status != 40 && order.status != 50 && order.status != 62 && order.status != 63}}" class="ptb10 fs7">
+        <button class="fs8 margin-t-5 big-button" data-id="{{order.id}}" type="primary" bindtap="goOrderDetail">即刻处理</button>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{orders == undefined || orders.length < 1}}">
+    <view class="fs8" class="outter-view not-first-outter">暂无订单，赶快去营销吧。</view>
+  </block>
+  <block wx:if="{{orders.length > 0 && hasGotAll === false}}">
+    <button class="fs8 big-button not-first-outter" type="primary" bindtap="getOrders">更多</button>
+  </block>
+
+</view>

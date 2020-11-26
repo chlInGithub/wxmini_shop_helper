@@ -1,0 +1,44 @@
+@import "/font-awesome/font-awesome.wxss";
+
+.modal-cover-top{
+  position: fixed;
+  top: 0;
+  background-color: #EEEEEE;
+  opacity: .9;
+  height: 30vh;
+  width: 100vw;
+}
+.modal-cover-bottom{
+  position: fixed;
+  top: 70vh;
+  background-color: #EEEEEE;
+  opacity: .9;
+  height: 50vh;
+  width: 100vw;
+}
+.modal{
+  position: fixed;
+  top: 30vh;
+  background-color: white;
+  width: 100vw;
+  height: 70vh;
+  border-radius: 5px 5px 0 0;
+  overflow: scroll;
+  z-index: 100;
+}
+.modal .header{
+  text-align: center;
+  margin-bottom: 2vh;
+}
+.modal .body{
+  width: 100vw;
+  display: inline-block;
+}
+.modal .close{
+  width: 100vw;
+  text-align: right;
+  font-size: 1.2rem;
+}
+.modal .close text{
+  margin-right: 4vw;
+}

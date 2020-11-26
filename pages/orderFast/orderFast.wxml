@@ -1,0 +1,27 @@
+<page-meta page-style="background-color:{{bgColor}};min-height:100vh;">
+</page-meta>
+
+<mp-navigation-bar background="{{navBGColor}}" loading="{{false}}" show="{{true}}" animated="{{false}}" back="{{true}}">
+  <view slot="center" class="fs10 cwhite">{{appName}}</view>
+</mp-navigation-bar>
+
+
+<view class="container">
+  <view class="view-form">
+    <input name="origin_text" style="color:black;margin-top:0;" 
+      class="item item-padding col80 fl bk-white ptb5"
+      model:value="{{orderIdFromCode}}" auto-height="true"
+      placeholder="扫订单二维码或输入订单ID"  placeholder-style="color: gray;font-size:.8rem" maxlength="22">
+    </input>
+    <button bindtap="getOrder" class="fs8 col10 fr plr0" type="primary"> 查询 </button>
+    <view class="clearboth"></view>
+  </view>
+
+
+  <view class="ptb10 outter-view fs8 cgray not-first-outter">
+    <button bindtap="getOrderIdByCode" class="fs8 big-button" type="primary"> 扫码 </button>
+    <view class="cell pl10 pr10 ptb10">
+      扫码订单详情页的订单二维码 或 输入订单ID，可快速查询订单。
+    </view>
+  </view>
+</view>

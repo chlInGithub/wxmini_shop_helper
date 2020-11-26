@@ -1,0 +1,13 @@
+  <view wx:if="{{showModal}}" class="modal-cover-top">
+  </view>
+  <view wx:if="{{showModal}}" class="modal modal-top">
+    <view class="close"><view class=" fa fa-times fa-lg ta-r" style="margin-right: 8vw;margin-top: 5vw;color: #cccccc;" bindtap="triggleModal"></view></view>
+    <view class="header">
+      {{title}}
+    </view>
+    <scroll-view scroll-y="true" class="body">
+      <slot name="slot-body"></slot>
+    </scroll-view>
+  </view>
+  <view wx:if="{{showModal}}" class="modal-cover-bottom">
+  </view>

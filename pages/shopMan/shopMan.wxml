@@ -1,0 +1,33 @@
+<page-meta page-style="background-color:{{bgColor}};min-height:100vh;">
+</page-meta>
+
+<mp-navigation-bar background="{{navBGColor}}" loading="{{false}}" show="{{true}}" animated="{{false}}" back="{{true}}">
+  <view slot="center" class="fs10 cwhite">{{appName}}</view>
+</mp-navigation-bar>
+
+
+<view class="container">
+  <view class="ptb10 outter-view fs8 not-first-outter">
+    <view class="cell pl10 pr10 ptb10 ta-l">
+      可登录微商城管理后台，获取店铺人员二维码。
+      扫码即可享受便捷的移动管理。
+    </view>
+  </view>
+
+  <view class="ptb10 outter-view fs8 cgray not-first-outter">
+    <view class="ta-l pl10">第1步： 店铺人员手机号</view>
+    <view class="view-form">
+      <input name="origin_text" style="color:black;margin-top:0;" 
+        class="item item-padding bk-white ptb5 ta-l"
+        model:value="{{mobile}}"
+        placeholder="店铺人员手机号"  placeholder-style="color: gray;font-size:.8rem" maxlength="11">
+      </input>
+    </view>
+  </view>
+
+
+  <view class="ptb10 outter-view fs8 cgray not-first-outter">
+    <view class="ta-l pl10">第2步： 扫描店铺人员二维码</view>
+    <button bindtap="getMerchantIdByCode" class="fs8 big-button" type="primary"> 扫码 </button>
+  </view>
+</view>

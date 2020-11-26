@@ -1,0 +1,23 @@
+{
+  "pages": [
+    "pages/index",
+    "pages/order/order",
+    "pages/orderFast/orderFast",
+    "pages/orderDetail/orderDetail",
+    "pages/shopMan/shopMan"
+  ],
+  "entryPagePath": "pages/index",
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1761FA",
+    "navigationBarTitleText": "博予.掌柜",
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "custom"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "mp-navigation-bar": "/components/navigation-bar/navigation-bar",
+    "infoModalComponent": "/components/infoModalComponent/infoModalComponent"
+  }
+}

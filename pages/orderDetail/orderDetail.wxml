@@ -1,0 +1,157 @@
+<page-meta page-style="background-color:{{bgColor}};min-height:100vh;">
+</page-meta>
+
+<mp-navigation-bar background="{{navBGColor}}" loading="{{false}}" show="{{true}}" animated="{{false}}" back="{{true}}">
+  <view slot="center" class="fs10 cwhite">{{appName}}</view>
+</mp-navigation-bar>
+
+<view class="container">
+  <view class="outter-view">
+    <view class="cwhite ptb10" style="background-color: rgb(255, 0, 54)">
+      <view class="col30 ta-l fl fs8 pl10">
+        {{detail.statusDes}}
+      </view>
+      <view class="col60 ta-c fr fs7 pr10" wx:if="{{detail.payVO}}">{{detail.payVO.typeDesc}}</view>
+      <view class="col60 ta-c fr fs7 pr10" wx:if="{{detail.status == 10 && detail.payVO.type == 2}}">待商家确认已付款</view>
+      <view class="clearboth"></view>
+    </view>
+  </view>
+
+  <view class="outter-view not-first-outter ptb10 ">
+    <view class="fs8">
+      <view class="pl10 ta-l col30 fl">订单编号</view>
+      <view class="pr10 ta-r col60 fr">{{detail.id}}</view>
+      <view class="clearboth"></view>
+    </view>
+    <view class="fs8 mt5">
+      <view class="pl10 ta-l col30 fl">创建时间</view>
+      <view class="pr10 ta-r col60 fr">{{detail.createTime}}</view>
+      <view class="clearboth"></view>
+    </view>
+  </view>
+
+  <view wx:if="{{detail.deliverVO}}" class="outter-view not-first-outter">
+    <view class="ptb10 pr10 pl10">
+      <view class="fs8 col30 ta-l fl">{{detail.deliverVO.name}}</view>
+      <view class="fs8 col60 ta-l">{{detail.deliverVO.mobile}}</view>
+      <view class="fs8 ta-l mt5">{{detail.deliverVO.city}} {{detail.deliverVO.address}}</view>
+      <view class="clearboth"></view>
+    </view>
+  </view>
+
+  <view wx:if="{{detail.deliverVO}}" class="outter-view not-first-outter">
+    <view class="fs8 ptb10">
+      <view class="col50 fl ta-l pl10">
+        配送方式
+      </view>
+      <view class="col40 ta-r fr pr10">
+        {{detail.deliverVO.typeDesc}}
+      </view>
+      <view class="clearboth"></view>
+    </view>
+    <button wx:if="{{detail.status==10 && detail.payVO.type == 2}}" class="fs8 button-warn cwhite margin-tb-5 big-button" data-id="{{detail.id}}" bindtap="confirmOfflinePayed">确认 线下已付款</button>
+    <button wx:if="{{detail.status==20 && detail.deliverVO.type == 0}}" class="fs8 cwhite margin-tb-5 big-button" data-id="{{detail.id}}" type="primary" bindtap="confirmOfflineCanTake">确认 可自提</button>
+    <button wx:if="{{detail.status==30 && detail.deliverVO.type == 0}}" class="fs8 cwhite margin-tb-5 big-button" data-id="{{detail.id}}" type="primary" bindtap="confirmOfflineTaken">确认 已自提</button>
+    <button wx:if="{{detail.status==20 && detail.deliverVO.type != 0}}" class="fs8 margin-tb-5 big-button" data-id="{{detail.id}}" type="primary" bindtap="showSent">马上发货</button>
+  </view>
+
+  <view wx:if="{{detail.subOrderVOS}}" class="outter-view not-first-outter ptb10">
+    <view wx:for="{{detail.subOrderVOS}}">
+      <view class="inline-block">
+        <view class="col25 fl img-view">
+          <image class="cart-item-img" src="{{imgPrefix + item.itemImg}}"></image>
+        </view>
+        <view class="fr col70 content ta-l">
+          <view class="fs7 mt3">{{item.itemTitle}}</view>
+          <view class="cgray fs6 mt3" wx:if="{{item.skuTitle}}">{{item.skuTitle}}</view>
+          <view class="fs6 mt3" wx:if="{{item.presell}}">
+            <view class="cred">
+              预售，预计发货日期 {{item.presell.sentTime}}
+            </view>
+          </view>
+          <view class="pr10 price-view mt3">
+            <view class="fs8 inline-block fl">￥{{item.price}}</view>
+            <view class="fs6 inline-block fl mt3 ml3"> x {{item.count}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="outter-view not-first-outter ptb10">
+    <view>
+      <view class="col50 ta-l pl10 fs8 fl">商品总价</view>
+      <view class="col40 ta-r fs7 fr pr10">￥{{detail.totalFee}}</view>
+      <view class="clearboth"></view>
+    </view>
+    <view class="mt5">
+      <view class=" col50 ta-l pl10 fs8 fl">运费(快递)</view>
+      <view class="col40 ta-r fs7 fr pr10">￥{{detail.deliverVO.freight}}</view>
+      <view class="clearboth"></view>
+    </view>
+    <view class="mt5" wx:for="{{detail.coupons}}" wx:key="*this">
+      <view class="col50 ta-l pl10 fs8 fl">{{item.desc}}</view>
+      <view class="col40 ta-r fs7 fr pr10">￥{{item.discount}}</view>
+      <view class="clearboth"></view>
+    </view>
+    <view class="mt5">
+      <view class="col50 ta-l pl10 fs9 fl">订单总计</view>
+      <view class="col40 ta-r fs8 fr pr10">￥{{detail.realFee}}</view>
+      <view class="clearboth"></view>
+    </view>
+  </view>
+
+
+  <view wx:if="{{detail.refundVO}}" class="outter-view not-first-outter ptb10">
+    <view>
+      <view class="col50 ta-l pl10 fs8 fl">退款处理状态</view>
+      <view class="col40 ta-r fs7 fr pr10">{{detail.refundVO.statusDesc}}</view>
+      <view class="clearboth"></view>
+    </view>
+    <view class="mt5">
+      <view class=" col50 ta-l pl10 fs8 fl">退款类型</view>
+      <view class="col40 ta-r fs7 fr pr10">{{detail.refundVO.typeDesc}}</view>
+      <view class="clearboth"></view>
+    </view>
+    <view class="mt5">
+      <view class="col50 ta-l pl10 fs8 fl">退款申请金额</view>
+      <view class="col40 ta-r fs7 fr pr10">￥{{detail.refundVO.applyFee}}</view>
+      <view class="clearboth"></view>
+    </view>
+    <view class="mt5">
+      <view class="col50 ta-l pl10 fs9 fl">退款原因</view>
+      <view class="col40 ta-r fs8 fr pr10">{{detail.refundVO.cause}}</view>
+      <view class="clearboth"></view>
+    </view>
+    <view class="mt5" wx:if="{{detail.refundVO.process}}">
+      <view class="col50 ta-l pl10 fs9 fl">过程概览</view>
+      <view class="col40 ta-r fs8 fr pr10">{{detail.refundVO.process}}</view>
+      <view class="clearboth"></view>
+    </view>
+    <button wx:if="{{detail.status==60}}" class="fs8 cwhite margin-tb-5 big-button" data-id="{{detail.id}}" type="primary" bindtap="confirmRefund">同意 退款</button>
+    <button wx:if="{{detail.status==60}}" class="fs8 cwhite margin-tb-5 big-button bk-warn" data-id="{{detail.id}}" bindtap="refuseRefund">拒绝 退款</button>
+  </view>
+</view>
+
+
+<!-- 必须设置class，以便 this.selectComponent(".className") -->
+<infoModalComponent title="发货" class="sentModal" modal-top="modal-top">
+  <view slot="slot-body">
+    <view class="cell mt10 fs8 pl10 pr10">
+      <view class="col20 fl">物流公司</view>
+      <view class="col70 fl input-view">
+        <input type="text" model:value="{{logisticsCp}}"></input>
+      </view>
+      <view class="clearboth"></view>
+    </view>
+    <view class="cell mt10 fs8 pl10 pr10">
+      <view class="col20 fl">物流编号</view>
+      <view class="col70 fl input-view">
+        <input type="text" model:value="{{logisticsNo}}"></input>
+      </view>
+    </view>
+    <view class="cell mt10 pl10 pr10 block">
+      <button class="fs8 big-button" type="primary" bindtap="sent">确认</button>
+    </view>
+  </view>
+</infoModalComponent>

@@ -1,0 +1,31 @@
+/* pages/itemDetail/itemDetail.wxss */
+
+.cart-item-img {
+  width: 23vw;
+  height: 23vw;
+  display: inline-block;
+}
+
+.order-view {
+  margin: 10px 5px 0 5px;
+  padding: 5px 0;
+}
+
+.order-view .img-view {
+  text-align: center;
+}
+
+.order-view .content {
+  text-align: left;
+}
+
+.price-view {
+  height: 1.2rem;
+  line-height: 1.2rem;
+}
+
+.operate-view .button {
+  margin: 3px;
+  border: 0.5px solid #ccc;
+  border-radius: 8px;
+}
