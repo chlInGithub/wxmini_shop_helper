@@ -23,9 +23,21 @@ Page({
       type,
       function(data){
         if(util.objectUtil.verifyValidObject(data)){
+          if(that.data.orders.length > 0){
+            that.data.orders = that.data.orders.filter(function(temp){
+              for (const key in data) {
+                const element = data[key];
+                if(element.id == temp.id){
+                  return false
+                }
+              }
+              return true
+            })
+          }
+          var newDatas = data.concat(that.data.orders)
           that.setData(
             {
-              orders: data.concat(that.data.orders)
+              orders: newDatas
             }
           ) 
         }
@@ -71,9 +83,9 @@ Page({
 
   refreshOrders: function(){
     if(util.objectUtil.verifyValidObject(this.data.refreshOrdersIntervalId)){
-      return
+      return false
     }
-
+    util.showToast("no refreshOrdersIntervalId")
     // this.closeRefreshOrdersInterval()
     var that = this
     var refreshOrdersIntervalId = setInterval(
@@ -124,8 +136,8 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    clearInterval(this.data.intervalId)
-    this.closeRefreshOrdersInterval()
+    //clearInterval(this.data.intervalId)
+    //this.closeRefreshOrdersInterval()
   },
 
   /**

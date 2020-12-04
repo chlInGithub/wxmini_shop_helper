@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    mobile: 18500425785
+    //mobile: 18500425785
   },
 
   getMerchantIdByCode: function(){

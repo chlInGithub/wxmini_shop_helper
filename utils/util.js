@@ -282,14 +282,23 @@ const JsonUtil = {
   }
 }
 
-var showMsg = function(msg, callback) {
+var showMsg = function(msg, callback, showCancel, cancellCallback) {
+  if(showCancel != true && showCancel != false){
+    showCancel = false
+  }
   wx.showModal({
     title: '提示',
     content: msg,
-    showCancel: false,
+    showCancel: showCancel,
     success: function (res) {
-      if(ObjectUtil.isFunction(callback)){
-        callback()
+      if (res.confirm) {
+        if(ObjectUtil.isFunction(callback)){
+          callback()
+        }
+      } else if (res.cancel) {
+        if(ObjectUtil.isFunction(cancellCallback)){
+          cancellCallback()
+        }
       }
     },
   })

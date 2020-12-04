@@ -9,7 +9,7 @@
 <view class="container">
   <view class="ptb10 outter-view fs8 cgray ta-l">
     <view class="cell pl10 pr10">
-      依据订单的修改时间，首先展示近一小时的50个订单，然后每间隔1分钟追加显示新订单。
+      依据订单的修改时间，首先展示<text class="cred">近一小时</text>的<text class="cred">50</text>个订单，然后每间隔<text class="cred">1分钟</text>追加显示新订单。
       <view>距离刷新订单还剩余<text class="cred">{{waitSecond}}</text>秒。</view>
     </view>
   </view>
