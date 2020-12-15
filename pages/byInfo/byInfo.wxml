@@ -1,0 +1,36 @@
+<page-meta page-style="background-color:{{bgColor}};min-height:100vh;">
+</page-meta>
+
+<mp-navigation-bar background="{{navBGColor}}" loading="{{false}}" show="{{true}}" animated="{{false}}" back="{{true}}">
+  <view slot="center" class="fs10 cwhite">{{appName}}</view>
+</mp-navigation-bar>
+
+
+<view class="container">
+  <view class="ptb10 outter-view fs10 not-first-outter">
+    <view class="cell pl10 pr10 ptb10 ta-c cred">
+      博予科技 . 认真做好一件事
+    </view>
+  </view>
+
+  <view class="ptb10 outter-view fs8 cgray not-first-outter">
+    <view>
+      <image src="{{url}}" style="width:70vw;height:70vw" mode="aspectFit" show-menu-by-longpress='true'></image>
+    </view>
+    <view class="cell pl10 pr10 ptb10 ta-c">
+      访问官网，了解更多服务。
+    </view>
+    <view class="cell pl10 pr10 ptb10 ta-c">
+      方式一：长按保存，然后扫描二维码
+    </view>
+    <view class="cell pl10 pr10 ptb10 ta-c">
+      方案二： 长按复制 
+      <mp-select-text 
+          show-copy-btn 
+          placement="top" 
+          value="by.5jym.com"
+        />
+      浏览器访问
+    </view>
+  </view>
+</view>

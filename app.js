@@ -14,7 +14,7 @@ App({
     this.globalData.imgPrefix = "https://" + this.globalData.appId + ".5jym.com/img/"
     this.globalData.uploadPrefix = "https://" + this.globalData.appId + ".5jym.com"
     //this.globalData.shopImg = this.globalData.imgPrefix + wx.getExtConfigSync().shopImg
-    this.globalData.shopImg = this.globalData.imgPrefix + "26f41f40ce4789f87648eebf90579df4"
+    this.globalData.shopImg = this.globalData.imgPrefix + "d1eec624a7fa09e76f0e2797ef8e03ed"
     this.globalData.appName = "博予.掌柜"
 
 

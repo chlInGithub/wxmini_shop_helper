@@ -32,3 +32,4 @@
         </view>
     </view>
 </view>
+<view class="fs4 footer bc1761FA" bindtap="showBYCode" style="top:-.8rem">由博予科技提供技术支持 by.5jym.com (点击了解更多)</view>

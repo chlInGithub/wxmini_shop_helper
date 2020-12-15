@@ -4,7 +4,8 @@
     "pages/order/order",
     "pages/orderFast/orderFast",
     "pages/orderDetail/orderDetail",
-    "pages/shopMan/shopMan"
+    "pages/shopMan/shopMan",
+    "pages/byInfo/byInfo"
   ],
   "entryPagePath": "pages/index",
   "window": {

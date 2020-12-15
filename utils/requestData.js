@@ -459,7 +459,35 @@ var getData = {
         util.showMsg("获取店铺信息失败!" + m)
       }
     })
-  }
+  },
+  getBYImg: function(sucCallback) {
+    // cache
+    var cacheKey = 'bySiteImg'
+    var cache = getApp().getCache(cacheKey)
+    if (util.objectUtil.verifyValidObject(cache)) {
+      if(util.objectUtil.isFunction(sucCallback)){
+        sucCallback(cache)
+      }
+      return
+    }
+
+    requestUtil.request({
+      url: "/wmall/qrcode/by",
+      data: {},
+      method: 'GET',
+      successCallBack: function(data){
+        if (util.jsonUtil.hasData(data)) {
+          getApp().addCache(cacheKey, data)
+        }
+        if (util.objectUtil.isFunction(sucCallback)) {
+          sucCallback(data)
+        }
+      },
+      failCallBack: function(m){
+        util.showMsg("获取博予科技二维码失败!")
+      }
+    })
+  },
 }
 
 module.exports = {

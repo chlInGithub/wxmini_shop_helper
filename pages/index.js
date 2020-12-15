@@ -29,6 +29,9 @@ Page({
     ],
     progressText: "正在努力打开页面……"
   },
+  showBYCode: function(){
+    goPageUtil.goPage.goBYInfo()
+  },
   kindToggle: function (e) {
     var id = e.currentTarget.id, list = this.data.list;
     for (var i = 0, len = list.length; i < len; ++i) {
