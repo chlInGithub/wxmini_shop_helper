@@ -47,7 +47,6 @@ var dealParams = function(url, data) {
   }
 
   // 生成sign
-  console.log(lastData)
   var sign = aesUtil.encrypt(lastData)
   // 这些字符作为参数会变为空格，所以提前替换
   //sign = sign.replace(/[\\&\\=\\+\\$\\,\\#]+/g, "")
@@ -128,6 +127,7 @@ var request = function(context) {
       wx.hideLoading()
     },
     fail(res) {
+      wx.hideLoading()
       var resultStr = JSON.stringify(res)
       if (resultStr.indexOf("未登录") !== -1) {
         util.showMsg('登录失效', function(){
@@ -147,6 +147,7 @@ var request = function(context) {
       failCallBack(resultStr)
     },
     success(res) {
+      wx.hideLoading()
       var resultStr = JSON.stringify(res)
 
       console.log(res.data)
