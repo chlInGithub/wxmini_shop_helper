@@ -1,5 +1,5 @@
-const util = require('./util.js')
-const requestUtil = require('./request.js')
+const util = require("wxmini_common_js").util
+const requestUtil = require("wxmini_common_js").request
 const goPageUtil = require('./goPage.js')
 
 var postData = {

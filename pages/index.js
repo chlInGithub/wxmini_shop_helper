@@ -1,8 +1,8 @@
 //index.js
-const util = require('../utils/util.js')
+const util = require("wxmini_common_js").util
 const goPageUtil = require('../utils/goPage.js')
 const requestDataUtil = require('../utils/requestData.js')
-const tokenUtil = require('../utils/token.js')
+const tokenUtil = require("wxmini_common_js").token
 
 //获取应用实例
 const app = getApp()

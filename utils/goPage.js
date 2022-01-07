@@ -1,4 +1,4 @@
-const util = require("./util.js")
+const util = require("wxmini_common_js").util
 
 var goPage = {
   goBYInfo: function () {
